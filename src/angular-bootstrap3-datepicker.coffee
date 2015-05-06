@@ -4,6 +4,12 @@ dp = angular.module('ng-bs3-datepicker', [])
 dp.directive 'ngBs3Datepicker', ($compile)->
   restrict: 'E'
   replace: true
+  scope: 
+    minDate: '='
+    maxDate: '='
+    warningDates: '=',
+    errorDates: '=',
+    disabledDates: '='
 
   template: """
     <div class='input-group date'>
@@ -35,6 +41,11 @@ dp.directive 'ngBs3Datepicker', ($compile)->
         language: language
         pickTime: false
         format: dateFormat
+        minDate: $scope.minDate
+        maxDate: $scope.maxDate
+        warningDates: $scope.warningDates
+        errorDates: $scope.errorDates
+        disabledDates: $scope.disabledDates
         icons:
             time: 'fa fa-clock-o'
             date: 'fa fa-calendar'

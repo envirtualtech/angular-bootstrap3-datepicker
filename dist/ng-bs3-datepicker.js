@@ -1419,6 +1419,13 @@ dp.directive('ngBs3Datepicker', function($compile) {
   return {
     restrict: 'E',
     replace: true,
+    scope: {
+      minDate: '=',
+      maxDate: '=',
+      warningDates: '=',
+      errorDates: '=',
+      disabledDates: '='
+    },
     template: "<div class='input-group date'>\n  <input type='text' class='form-control'/>\n  <span class='input-group-addon'>\n    <span class='fa fa-calendar'></span>\n  </span>\n</div>",
     link: function($scope, element, attr) {
       var attributes, dateFormat, input, resetValue;
@@ -1441,6 +1448,11 @@ dp.directive('ngBs3Datepicker', function($compile) {
           language: language,
           pickTime: false,
           format: dateFormat,
+          minDate: $scope.minDate,
+          maxDate: $scope.maxDate,
+          warningDates: $scope.warningDates,
+          errorDates: $scope.errorDates,
+          disabledDates: $scope.disabledDates,
           icons: {
             time: 'fa fa-clock-o',
             date: 'fa fa-calendar',
