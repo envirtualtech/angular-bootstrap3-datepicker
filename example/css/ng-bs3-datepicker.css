@@ -192,7 +192,7 @@
 .bootstrap-datetimepicker-widget td.disabled,
 .bootstrap-datetimepicker-widget td.disabled:hover {
   background: none;
-  color: #777777;
+  color: #eee;
   cursor: not-allowed;
 }
 .bootstrap-datetimepicker-widget td span {
