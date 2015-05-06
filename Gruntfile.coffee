@@ -21,7 +21,7 @@ module.exports = (grunt) ->
     concat:
       js:
         src: [
-          'bower_components/bootstrap3-datetimepicker/build/js/bootstrap-datetimepicker.min.js',
+          'bower_components/bootstrap3-datetimepicker/src/js/bootstrap-datetimepicker.js',
           'js/src.js']
         dest: 'dist/ng-bs3-datepicker.js'
       css:
