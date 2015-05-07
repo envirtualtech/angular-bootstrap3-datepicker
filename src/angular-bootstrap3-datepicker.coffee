@@ -10,6 +10,7 @@ dp.directive 'ngBs3Datepicker', ($compile)->
     warningDates: '=',
     errorDates: '=',
     disabledDates: '='
+    onChange: '&'
 
   template: """
     <div class='input-group date'>
@@ -73,6 +74,7 @@ dp.directive 'ngBs3Datepicker', ($compile)->
                 obj[path] = e.date.format(dateFormat)
             else
               obj = obj[path]
+      $scope.onChange()
 
     $scope.$watch attr.ngModel, (newValue, oldValue)->
       if(oldValue and !newValue) then resetValue = true
