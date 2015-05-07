@@ -4,14 +4,6 @@ dp = angular.module('ng-bs3-datepicker', [])
 dp.directive 'ngBs3Datepicker', ($compile)->
   restrict: 'E'
   replace: true
-  scope: 
-    minDate: '='
-    maxDate: '='
-    warningDates: '=',
-    errorDates: '=',
-    disabledDates: '='
-    onChange: '&'
-
   template: """
     <div class='input-group date'>
       <input type='text' class='form-control'/>
@@ -74,7 +66,6 @@ dp.directive 'ngBs3Datepicker', ($compile)->
                 obj[path] = e.date.format(dateFormat)
             else
               obj = obj[path]
-      $scope.onChange()
 
     $scope.$watch attr.ngModel, (newValue, oldValue)->
       if(oldValue and !newValue) then resetValue = true

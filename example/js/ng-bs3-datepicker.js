@@ -1419,14 +1419,6 @@ dp.directive('ngBs3Datepicker', function($compile) {
   return {
     restrict: 'E',
     replace: true,
-    scope: {
-      minDate: '=',
-      maxDate: '=',
-      warningDates: '=',
-      errorDates: '=',
-      disabledDates: '=',
-      onChange: '&'
-    },
     template: "<div class='input-group date'>\n  <input type='text' class='form-control'/>\n  <span class='input-group-addon'>\n    <span class='fa fa-calendar'></span>\n  </span>\n</div>",
     link: function($scope, element, attr) {
       var attributes, dateFormat, input, resetValue;
@@ -1466,7 +1458,7 @@ dp.directive('ngBs3Datepicker', function($compile) {
         return element.find('input').focus();
       });
       element.on("change.dp", function(e) {
-        $scope.$apply(function() {
+        return $scope.$apply(function() {
           var i, obj, objPath, path, _i, _len, _results;
           if (e.date) {
             objPath = attr.ngModel.split(".");
@@ -1491,7 +1483,6 @@ dp.directive('ngBs3Datepicker', function($compile) {
             return _results;
           }
         });
-        return $scope.onChange();
       });
       $scope.$watch(attr.ngModel, function(newValue, oldValue) {
         if (oldValue && !newValue) {
