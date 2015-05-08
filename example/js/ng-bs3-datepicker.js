@@ -1385,6 +1385,7 @@ THE SOFTWARE.
         };
 
         init();
+        return this;
     };
 
     $.fn.datetimepicker = function (options) {
