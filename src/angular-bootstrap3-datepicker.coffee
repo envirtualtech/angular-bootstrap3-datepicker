@@ -47,21 +47,10 @@ dp.directive 'ngBs3Datepicker', ($compile)->
       )
     
     $scope.$watch 'warningDates', (value)->
-      input.datetimepicker(
-        language: input.attr('language')
-        pickTime: false
-        format: dateFormat
-        minDate: $scope.minDate
-        maxDate: $scope.maxDate
-        warningDates: $scope.warningDates
-        errorDates: $scope.errorDates
-        disabledDates: $scope.disabledDates
-        icons:
-            time: 'fa fa-clock-o'
-            date: 'fa fa-calendar'
-            up: 'fa fa-arrow-up'
-            down: 'fa fa-arrow-down'
-      )
+      input.datetimepicker.setWarningDates(value)
+
+    $scope.$watch 'errorDates', (value)->
+      input.datetimepicker.setErrorDates(value)
 
     #allow addon to be click in place of the input itself
     element.find('.input-group-addon').on 'click', (e)->

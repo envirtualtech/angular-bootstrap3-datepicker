@@ -1335,6 +1335,20 @@ THE SOFTWARE.
             }
         };
 
+        picker.setWarningDates = function (dates) {
+            picker.options.warningDates = indexGivenDates(dates);
+            if (picker.viewDate) {
+                update();
+            }
+        };
+
+        picker.setErrorDates = function (dates) {
+            picker.options.errorDates = indexGivenDates(dates);
+            if (picker.viewDate) {
+                update();
+            }
+        };
+
         picker.setEnabledDates = function (dates) {
             picker.options.enabledDates = indexGivenDates(dates);
             if (picker.viewDate) {
@@ -1455,22 +1469,10 @@ dp.directive('ngBs3Datepicker', function($compile) {
         });
       });
       $scope.$watch('warningDates', function(value) {
-        return input.datetimepicker({
-          language: input.attr('language'),
-          pickTime: false,
-          format: dateFormat,
-          minDate: $scope.minDate,
-          maxDate: $scope.maxDate,
-          warningDates: $scope.warningDates,
-          errorDates: $scope.errorDates,
-          disabledDates: $scope.disabledDates,
-          icons: {
-            time: 'fa fa-clock-o',
-            date: 'fa fa-calendar',
-            up: 'fa fa-arrow-up',
-            down: 'fa fa-arrow-down'
-          }
-        });
+        return input.datetimepicker.setWarningDates(value);
+      });
+      $scope.$watch('errorDates', function(value) {
+        return input.datetimepicker.setErrorDates(value);
       });
       element.find('.input-group-addon').on('click', function(e) {
         return element.find('input').focus();
