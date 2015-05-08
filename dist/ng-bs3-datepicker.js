@@ -1480,6 +1480,11 @@ dp.directive('ngBs3Datepicker', function($compile) {
           return picker.data("DateTimePicker").setErrorDates(value);
         }
       });
+      $scope.$watch('disabledDates', function(value) {
+        if (value) {
+          return picker.data("DateTimePicker").setDisabledDates(value);
+        }
+      });
       element.find('.input-group-addon').on('click', function(e) {
         return element.find('input').focus();
       });

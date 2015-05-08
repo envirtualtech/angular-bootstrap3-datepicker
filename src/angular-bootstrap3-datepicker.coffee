@@ -55,6 +55,10 @@ dp.directive 'ngBs3Datepicker', ($compile)->
       if value
         picker.data("DateTimePicker").setErrorDates(value)
 
+    $scope.$watch 'disabledDates', (value)->
+      if value
+        picker.data("DateTimePicker").setDisabledDates(value)
+
     #allow addon to be click in place of the input itself
     element.find('.input-group-addon').on 'click', (e)->
       element.find('input').focus()
