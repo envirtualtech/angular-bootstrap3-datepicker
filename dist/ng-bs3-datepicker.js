@@ -1471,10 +1471,10 @@ dp.directive('ngBs3Datepicker', function($compile) {
         });
       });
       $scope.$watch('warningDates', function(value) {
-        return picker.setWarningDates(value);
+        return picker.data("DateTimePicker").setWarningDates(value);
       });
       $scope.$watch('errorDates', function(value) {
-        return picker.setErrorDates(value);
+        return picker.data("DateTimePicker").setErrorDates(value);
       });
       element.find('.input-group-addon').on('click', function(e) {
         return element.find('input').focus();
