@@ -16,6 +16,7 @@ dp.directive 'ngBs3Datepicker', ($compile)->
   link: ($scope, element, attr)->
 
     dateFormat = ""
+    picker = undefined
 
     attributes = element.prop "attributes"
     input = element.find "input"
@@ -30,7 +31,7 @@ dp.directive 'ngBs3Datepicker', ($compile)->
 
     $scope.$watch attr.language, (value)->
       language = if value then value else input.attr('language')
-      input.datetimepicker(
+      picker = input.datetimepicker(
         language: language
         pickTime: false
         format: dateFormat
@@ -47,10 +48,10 @@ dp.directive 'ngBs3Datepicker', ($compile)->
       )
     
     $scope.$watch 'warningDates', (value)->
-      input.datetimepicker.setWarningDates(value)
+      picker.setWarningDates(value)
 
     $scope.$watch 'errorDates', (value)->
-      input.datetimepicker.setErrorDates(value)
+      picker.setErrorDates(value)
 
     #allow addon to be click in place of the input itself
     element.find('.input-group-addon').on 'click', (e)->

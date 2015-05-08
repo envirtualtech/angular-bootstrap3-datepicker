@@ -1436,8 +1436,9 @@ dp.directive('ngBs3Datepicker', function($compile) {
     replace: true,
     template: "<div class='input-group date'>\n  <input type='text' class='form-control'/>\n  <span class='input-group-addon'>\n    <span class='fa fa-calendar'></span>\n  </span>\n</div>",
     link: function($scope, element, attr) {
-      var attributes, dateFormat, input, resetValue;
+      var attributes, dateFormat, input, picker, resetValue;
       dateFormat = "";
+      picker = void 0;
       attributes = element.prop("attributes");
       input = element.find("input");
       resetValue = false;
@@ -1452,7 +1453,7 @@ dp.directive('ngBs3Datepicker', function($compile) {
       $scope.$watch(attr.language, function(value) {
         var language;
         language = value ? value : input.attr('language');
-        return input.datetimepicker({
+        return picker = input.datetimepicker({
           language: language,
           pickTime: false,
           format: dateFormat,
@@ -1470,10 +1471,10 @@ dp.directive('ngBs3Datepicker', function($compile) {
         });
       });
       $scope.$watch('warningDates', function(value) {
-        return input.datetimepicker.setWarningDates(value);
+        return picker.setWarningDates(value);
       });
       $scope.$watch('errorDates', function(value) {
-        return input.datetimepicker.setErrorDates(value);
+        return picker.setErrorDates(value);
       });
       element.find('.input-group-addon').on('click', function(e) {
         return element.find('input').focus();
